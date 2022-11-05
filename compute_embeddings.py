@@ -51,12 +51,12 @@ def main():
     for split in ("query", "gallery", "train"):
         s_feat, s_fnames = extract_features(model, loader, split=split)
         feat += s_feat
-        fnames += fnames
+        fnames += s_fnames
 
     feat = np.concatenate(feat)
 
-    np.save("data/embeddings/vectors.npy", feat)
-    with open("data/embeddings/fnames.npy", "w") as f:
+    np.save("graph_data/embeddings.npy", feat)
+    with open("graph_data/embeddings_fnames.npy", "w") as f:
         json.dump(fnames, f)
 
     
